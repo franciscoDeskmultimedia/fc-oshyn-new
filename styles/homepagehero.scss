@@ -1,0 +1,33 @@
+.homepage-hero{
+    position: relative;
+    overflow: hidden;
+}
+.home{
+    z-index: -1;
+
+}
+.home::before {
+    content: "";
+    position: absolute;
+    background: radial-gradient(circle, rgb(154, 39, 208) 30%, rgb(58, 91, 206) 65%);
+    filter: blur(350px);
+    width: 73%;
+    height: 1050px;
+    left: 13.4%;
+    top: 0%;
+    z-index: 2;
+    opacity: .8;
+}
+.home::after {
+    content: "";
+    position: absolute;
+    width: 27%;
+    height: 730px;
+    left: 73%;
+    bottom: 100%;
+    background: #5dc4f2;
+    opacity: .8;
+    filter: blur(150px);
+    z-index: 3;
+    border-radius: 2000px 0 0 100%;
+}
