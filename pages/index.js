@@ -6,7 +6,8 @@ import Navigation from '../components/navigation'
 import HomepageHero from '../components/homepageHero'
 
 import { Rubik, Sora } from '@next/font/google';
-import { getHomePage } from '../lib/api'
+import { getHomePage, getNav } from '../lib/api'
+import CardSlider from '../components/cardSlider'
 
 
 const rubik = Rubik({
@@ -18,8 +19,9 @@ const sora = Sora({
 })
 
 
-export default function Home({homepage}) {
-  console.log(homepage.page)
+export default function Home({homepage, nav}) {
+  
+  const navigationItems = nav.nav.navItemCollection.items;
   return (
     <div>
       <Head>
@@ -29,15 +31,27 @@ export default function Home({homepage}) {
       </Head>
 
       <main className={`${sora.variable} ${rubik.variable}`}>
-        <Navigation></Navigation>
+        <Navigation navItems={navigationItems}></Navigation>
         
         {homepage.page.blocksCollection.items.map((item,index)=>{
-          if(Object.keys(item) == 'sliderItemsCollection'){
-            console.log(item)
+
+          console.log(item.__typename)
+
+          if(item.__typename == "Slider"){
             return(
               <HomepageHero key={index} slider={item.sliderItemsCollection.items}></HomepageHero>
                 // <Slider key={index} slides={item.sliderItemsCollection.items}></Slider>
             )
+          }
+
+          if(item.__typename == "RelatedServicesSlider"){
+            return(
+              <CardSlider key={index} cardSlides={item.relatedServicesCollection.items}></CardSlider>
+            )
+            // return(
+            //   <HomepageHero key={index} slider={item.sliderItemsCollection.items}></HomepageHero>
+            //     // <Slider key={index} slides={item.sliderItemsCollection.items}></Slider>
+            // )
         }
         })}
 
@@ -62,7 +76,8 @@ export default function Home({homepage}) {
 
 export async function getStaticProps({ preview = false }) {
   const homepage = (await getHomePage(preview)) ?? [];
+  const nav = (await getNav(preview)) ?? [];
   return {
-    props: { preview, homepage },
+    props: { preview, homepage, nav },
   }
 }

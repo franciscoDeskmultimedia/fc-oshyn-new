@@ -7,7 +7,6 @@ import { Splide, SplideSlide } from '@splidejs/react-splide';
 import '@splidejs/react-splide/css';
 
 const HomepageSlider = (props)=>{
-    console.log(props.slides)
     return(
         <Splide aria-label="My Favorite Images">
             {props.slides.map((slide,index)=>{
