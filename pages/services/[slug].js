@@ -3,7 +3,8 @@ import Navigation from "../../components/navigation";
 
 import ServicesHero from "../../components/servicesHero";
 
-import { getAllServicesWithSlug, getService, getNav } from "../../lib/api"
+import { getAllServicesWithSlug, getService, getNav } from "../../lib/api";
+import { motion } from 'framer-motion';
 
 const Services = ({service, nav})=>{
     if(!service){
@@ -12,8 +13,6 @@ const Services = ({service, nav})=>{
         ) 
     }else{
         const serviceItem = service[0];
-        console.log(serviceItem)
-        // console.log(nav)
         const navigationItems = nav.nav.navItemCollection.items;
         return(
             <>
@@ -22,7 +21,7 @@ const Services = ({service, nav})=>{
                     <meta name="description" content="Oshyn service" />
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
-                <main className=" bg-red-50">
+                <motion.main initial={{opacity:0}} exit={{opacity:0}} animate={{opacity:1}} className=" bg-red-50">
                     <Navigation navItems={navigationItems}></Navigation> 
                     <ServicesHero 
                         title={serviceItem.hero.title} 
@@ -42,7 +41,7 @@ const Services = ({service, nav})=>{
                     />
                     
                     {/* <ServicesHero title="test"></ServicesHero> */}
-                </main>
+                </motion.main>
             </>
         )
     }
