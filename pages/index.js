@@ -67,7 +67,6 @@ export default function Home({homepage, nav}) {
             )
           }
           if(item.__typename == 'InsightSlider'){
-            console.log(item)
             return(
               <section key={index} className='insight py-20 px-10 w-full'>
                 <div className='insight__inner max-w-7xl mx-auto flex flex-wrap items-center'>
@@ -79,10 +78,9 @@ export default function Home({homepage, nav}) {
                     <p>{item.description}</p>
                     <div className='insight-cta flex flex-wrap mt-7'>
                       {item.ctaCollection.items.map((cta,index)=>{
-                        console.log(cta.text)
                         return(
-                          <div className='insight-cta__item mb-4 mr-3'>
-                            <Button type='primary' key={index} url={cta.url}>{cta.text}</Button>
+                          <div key={index} className='insight-cta__item mb-4 mr-3'>
+                            <Button type='primary'  url={cta.url}>{cta.text}</Button>
                           </div>
                           
                         )
