@@ -34,7 +34,7 @@ const Navigation = (props)=>{
     }
     
     return(
-            <motion.nav  className=" max-w-7xl main-nav w-full flex h-40 items-center m-auto relative z-10 md:px-0 px-9">
+            <motion.nav  className=" max-w-7xl main-nav w-full flex h-40 items-center m-auto relative z-10 px-9 justify-between md:justify-end">
                 <div className='logo w-1/5 min-w-max'>
                     <Link href='/'>
                         <Image src='/oshyn-logo.svg' alt='Oshyn logo' priority width={155} height={65}></Image>
@@ -52,7 +52,10 @@ const Navigation = (props)=>{
             
                     
                 </motion.ul>
-                <Button className=' w-1/3' url="https://google.com" type='secondary' >Ask a Question</Button>
+                <div className=' w-1/3'>
+                    <Button url="https://google.com" type='secondary' >Ask a Question</Button>
+                </div>
+                
             </motion.nav>
         
     )

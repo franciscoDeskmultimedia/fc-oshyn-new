@@ -27,6 +27,35 @@
   }
 }
 
+.splide{
+  max-width: 100%;
+}
+
+main{
+  overflow: hidden;
+}
 li{
   @apply font-rubik
+}
+
+.slider-cta__inner{
+  background: url('../public/plus2.png');
+  background-repeat: no-repeat;
+  background-position: left bottom; 
+}
+
+.card-slider{
+  .stripped-circle__decor {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+  }
+ .stripped-rectangle__decor{
+    bottom: 80%;
+    right: -50%;
+    z-index: -1;
+    position: absolute;
+  }
 }

@@ -23,7 +23,7 @@ const lobster = Lobster({
 function MyApp({ Component, pageProps }) {
 
   return (
-    <AnimatePresence  >
+    <AnimatePresence initial={false} >
       <main className={`${lobster.variable} ${sora.variable} ${rubik.variable}`}>
         <Component {...pageProps} />
         <style jsx global>

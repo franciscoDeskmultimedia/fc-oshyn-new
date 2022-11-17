@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^15.12.1",
     "@next/font": "^13.0.3",
     "@splidejs/react-splide": "^0.7.12",
     "eslint": "8.27.0",

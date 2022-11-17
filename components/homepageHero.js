@@ -5,12 +5,12 @@ import Image from "next/image";
 
 const HomepageHero = (props)=> {
     return (
-        <div className="homepage-hero__inner max-w-7xl mx-auto md:px-0 px-9">
+        <div className="homepage-hero__inner max-w-7xl mx-auto px-9">
             <div className="home">
                 <div className="dotted-circle__decor">
                     <Image  src='/dotted-circle.svg' alt='dotted circle decor' priority width={300} height={300}></Image>
                 </div>
-                <div className="stripped-circle__decor">
+                <div className="stripped-circle__decor hidden md:block">
                     <Image  src='/stripped-circle.svg' alt='dotted circle decor' priority width={410} height={410}></Image>
                 </div>
                 <div className="stripped-rectangle__decor">
