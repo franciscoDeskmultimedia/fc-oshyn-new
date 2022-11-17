@@ -10,8 +10,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        rubik: ['var(--font-rubik)', ...fontFamily.sans],
-        sora: ['var(--font-sora)', ...fontFamily.sans],
+        lobster:['var(--lobster-font)', ...fontFamily.sans],
+        rubik: ['var(--rubik-font)', ...fontFamily.sans],
+        sora: ['var(--sora-font)', ...fontFamily.sans],
+        
       },
       colors: {
         'background':'#010a27'

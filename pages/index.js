@@ -5,20 +5,14 @@ import styles from '../styles/Home.module.css'
 import Navigation from '../components/navigation'
 import HomepageHero from '../components/homepageHero'
 
-import { Rubik, Sora } from '@next/font/google';
 import { getHomePage, getNav } from '../lib/api'
 import CardSlider from '../components/cardSlider'
 
 import { motion } from 'framer-motion';
+import SliderCta from '../components/SliderCta'
 
 
-const rubik = Rubik({
-  variable: '--font-rubik',
-})
 
-const sora = Sora({
-  variable: '--font-sora',
-})
 
 
 export default function Home({homepage, nav}) {
@@ -32,7 +26,7 @@ export default function Home({homepage, nav}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <motion.main initial={{opacity:0}} exit={{opacity:0}} animate={{opacity:1}} className={`${sora.variable} ${rubik.variable}`}>
+      <motion.main initial={{opacity:0}} exit={{opacity:0}} animate={{opacity:1}} >
         <Navigation navItems={navigationItems}></Navigation>
         
         {homepage.page.blocksCollection.items.map((item,index)=>{
@@ -41,20 +35,37 @@ export default function Home({homepage, nav}) {
 
           if(item.__typename == "Slider"){
             return(
-              <HomepageHero key={index} slider={item.sliderItemsCollection.items}></HomepageHero>
-                // <Slider key={index} slides={item.sliderItemsCollection.items}></Slider>
+              <section className='homepage-hero min-h-screen -mt-40 pt-40 w-full bg-background pb-24' >
+                <HomepageHero key={index} slider={item.sliderItemsCollection.items}></HomepageHero>
+              </section>
             )
           }
 
           if(item.__typename == "RelatedServicesSlider"){
             return(
-              <CardSlider key={index} cardSlides={item.relatedServicesCollection.items}></CardSlider>
+              <section className='related-services py-20 px-10 w-full'>
+                <div className='related-services__inner max-w-7xl mx-auto flex flex-wrap items-center'>
+                  <div className=' w-2/3 pr-9'>
+                    <CardSlider key={index} cardSlides={item.relatedServicesCollection.items}></CardSlider>
+                  </div>
+                  <div className='w-1/3'>
+                    <h2 className=' font-sora'>{item.title}</h2>
+                    <p>{item.description}</p>
+                  </div>
+                </div>
+                
+              </section>
             )
-            // return(
-            //   <HomepageHero key={index} slider={item.sliderItemsCollection.items}></HomepageHero>
-            //     // <Slider key={index} slides={item.sliderItemsCollection.items}></Slider>
-            // )
-        }
+          }
+          if(item.__typename == "SliderCta"){
+            return(
+              <section className='slider-cta pt-36 px-10 w-full bg-slate-900'>
+                <SliderCta slides={item}></SliderCta>
+              </section>
+            )
+          }
+
+
         })}
 
       

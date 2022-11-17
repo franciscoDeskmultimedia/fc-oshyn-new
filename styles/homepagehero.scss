@@ -31,3 +31,19 @@
     z-index: 3;
     border-radius: 2000px 0 0 100%;
 }
+.dotted-circle__decor{
+    position: absolute;
+    top: calc(-250px / 2);
+    right: calc(-250px / 2);
+}
+.stripped-circle__decor {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+.stripped-rectangle__decor{
+    top: 50%;
+    left: -11%;
+    position: absolute;
+}

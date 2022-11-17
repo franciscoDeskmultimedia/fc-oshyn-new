@@ -41,7 +41,7 @@ const Navigation = (props)=>{
                     </Link>
                     
                 </div>
-                <motion.ul initial='hidden' animate='show' variants={container} className='menu w-4/5 hidden md:flex'>
+                <motion.ul initial='hidden' animate='show' variants={container} className='menu w-3/5 hidden md:flex'>
                     {props.navItems.map((item,index)=>{
                         return(
                             <motion.li variants={itemAnimation} key={index} className=' text-white px-3 pt-2'>
@@ -52,7 +52,7 @@ const Navigation = (props)=>{
             
                     
                 </motion.ul>
-                <Button url="https://google.com" type='secondary' >Text</Button>
+                <Button className=' w-1/3' url="https://google.com" type='secondary' >Ask a Question</Button>
             </motion.nav>
         
     )

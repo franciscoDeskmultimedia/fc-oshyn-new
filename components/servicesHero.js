@@ -9,7 +9,7 @@ const ServicesHero = (props)=>{
                 
                 <div className="max-w-7xl m-auto relative z-10 flex flex-wrap" >
                     <div className=" w-1/2">
-                        <h3>{props.title}</h3>
+                        <h1>{props.title}</h1>
                         <p>{props.description}</p>
                         <div className="services-cta">
                             <Button url={props.cta.link} type="primary">{props.cta.text}</Button>
