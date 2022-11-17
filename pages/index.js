@@ -35,7 +35,7 @@ export default function Home({homepage, nav}) {
 
           if(item.__typename == "Slider"){
             return(
-              <section className='homepage-hero min-h-screen -mt-40 pt-40 w-full bg-background pb-24' >
+              <section key={index} className='homepage-hero min-h-screen -mt-40 pt-40 w-full bg-background pb-24' >
                 <HomepageHero key={index} slider={item.sliderItemsCollection.items}></HomepageHero>
               </section>
             )
@@ -43,7 +43,7 @@ export default function Home({homepage, nav}) {
 
           if(item.__typename == "RelatedServicesSlider"){
             return(
-              <section className='related-services py-20 px-10 w-full'>
+              <section key={index} className='related-services py-20 px-10 w-full'>
                 <div className='related-services__inner max-w-7xl mx-auto flex flex-wrap items-center'>
                   <div className=' w-2/3 pr-9'>
                     <CardSlider key={index} cardSlides={item.relatedServicesCollection.items}></CardSlider>
@@ -59,7 +59,7 @@ export default function Home({homepage, nav}) {
           }
           if(item.__typename == "SliderCta"){
             return(
-              <section className='slider-cta pt-36 px-10 w-full bg-slate-900'>
+              <section key={index} className='slider-cta pt-36 px-10 w-full bg-slate-900'>
                 <SliderCta slides={item}></SliderCta>
               </section>
             )
