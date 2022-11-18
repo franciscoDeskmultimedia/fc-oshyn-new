@@ -32,8 +32,6 @@ export default function Home({homepage, nav}) {
         
         {homepage.page.blocksCollection.items.map((item,index)=>{
 
-          console.log(item.__typename)
-
           if(item.__typename == "Slider"){
             return(
               <section key={index} className='homepage-hero min-h-screen -mt-40 pt-40 w-full bg-background pb-24' >

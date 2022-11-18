@@ -28,10 +28,9 @@ const TabSlider = (props) => {
             </div>
             <div className="tabs-logo__sliders">
                     {tabs.map((item,index)=>{
-                        // console.log(item)
                         return(
-                            <div className={`${index == active ? ' block' : ' hidden' }`}>
-                                <LogoCarousel slider={item.logosCollection}></LogoCarousel>
+                            <div key={index} className={`${index == active ? ' block' : ' hidden' }`}>
+                                <LogoCarousel key={index} slider={item.logosCollection}></LogoCarousel>
                             </div>
                         )
                     })}

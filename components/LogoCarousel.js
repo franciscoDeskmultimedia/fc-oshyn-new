@@ -2,7 +2,6 @@ import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import Image from 'next/image';
 
 const LogoCarousel = (props)=>{
-    console.log(props.slider.items)
     return(
         <div className=' logo-slider w-full'>
             <Splide 
@@ -28,9 +27,9 @@ const LogoCarousel = (props)=>{
                     }
                 }}>
                     <SplideTrack>
-                        {props.slider.items.map((item)=>{
+                        {props.slider.items.map((item,index)=>{
                             return(
-                                <SplideSlide>
+                                <SplideSlide key={index}>
                                     <Image src={item.url} width={item.width} height={item.height} alt={item.title}></Image>
                                 </SplideSlide>
                             )
