@@ -14,11 +14,11 @@ const TabSlider = (props) => {
                     {tabs.map((item,index)=>{
                         if(index == 0){
                             return(
-                                <div key={index} className={`${index == active ? ' font-bold tab-active text-white relative mr-2' : ' text-white mr-2' }`} onClick={()=>toggleState(index)}>{item.title} </div>
+                                <div key={index} className={`${index == active ? 'tab-active relative' : null } mr-2 text-white cursor-pointer font-bold`} onClick={()=>toggleState(index)}>{item.title} </div>
                             )  
                         }else{
                             return(
-                                <div key={index} className={`${index == active ? ' font-bold tab-active text-white relative' : 'text-white' }`} onClick={()=>toggleState(index)}>{item.title}</div>
+                                <div key={index} className={`${index == active ? 'tab-active relative' : null } mr-2 text-white cursor-pointer font-bold`} onClick={()=>toggleState(index)}>{item.title}</div>
                             )
                         }
                         
