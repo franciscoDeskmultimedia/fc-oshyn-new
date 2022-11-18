@@ -39,7 +39,7 @@ const CardSlider = (props)=>{
                         return (
                             <SplideSlide  key={index}  >
                                 <div className=' shadow-md w-full p-10 h-full relative overflow-hidden'>
-                                    <Image className=' mb-12' alt={card.featuredImage.title} src={card.featuredImage.url} width={261} height={218}></Image>
+                                    <Image className=' mb-12' alt={card.featuredImage.title} src={card.featuredImage.url} width={384} height={322}></Image>
                                     <h3 className='font-sora'>{card.title}</h3>
                                     <p>{card.exerpt}</p>
                                     <Link className=' font-bold underline mt-4 block' href={`/services/${card.slug}`}>Learn More</Link>
@@ -56,7 +56,7 @@ const CardSlider = (props)=>{
                                     <h3 className=' font-sora'>{card.title}</h3>
                                     <p>{card.exerpt}</p>
                                     <Link className=' font-bold underline mt-4' href={`/services/${card.slug}`}>Learn More</Link>
-                                    <Image className=' mt-12 block' alt={card.featuredImage.title} src={card.featuredImage.url} width={261} height={218}></Image>
+                                    <Image className=' mt-12 block' alt={card.featuredImage.title} src={card.featuredImage.url} width={384} height={322}></Image>
                                     <div className="stripped-circle__decor">
                                         <Image  src='/stripped-circle.svg' alt='dotted circle decor' priority width={410} height={410}></Image>
                                     </div>

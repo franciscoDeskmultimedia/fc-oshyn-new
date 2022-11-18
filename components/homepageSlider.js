@@ -29,7 +29,7 @@ const HomepageSlider = (props)=>{
                                     <Button url={slide.cta.url} type='primary'>{slide.cta.text}</Button>
                                 </div>
                                 <div className='w-full md:w-1/2'>
-                                    <Image alt={slide.image.title} src={slide.image.url} width={slide.image.width} height={slide.image.height} />
+                                    <Image priority alt={slide.image.title} src={slide.image.url} width={slide.image.width} height={slide.image.height} />
                                 </div>
                             </div>
                             

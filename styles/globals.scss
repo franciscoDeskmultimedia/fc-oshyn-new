@@ -59,3 +59,38 @@ li{
     position: absolute;
   }
 }
+
+.carousel{
+  .splide{
+    @apply flex flex-wrap items-center;
+    .splide__arrow--prev{
+      left: 0;
+      svg{
+        transform: unset;
+      }
+    }
+    .splide__arrow--next{
+      right: 0;
+    }
+  }
+  .stripped-circle__decor {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+  }
+ .stripped-rectangle__decor{
+    bottom: 80%;
+    right: -50%;
+    z-index: -1;
+    position: absolute;
+  }
+}
+
+.logo-slider{
+  .splide__list{
+    display: flex;
+    align-items: center;
+  }
+}

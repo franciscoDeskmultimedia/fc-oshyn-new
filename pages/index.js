@@ -6,13 +6,12 @@ import Navigation from '../components/navigation'
 import HomepageHero from '../components/homepageHero'
 
 import { getHomePage, getNav } from '../lib/api'
-import CardSlider from '../components/cardSlider'
 
 import { motion } from 'framer-motion';
 import SliderCta from '../components/SliderCta'
 import Button from '../components/button'
-import InsightCards from '../components/insightCards'
-
+import Carousel from '../components/Carousel'
+import TabSlider from '../components/TabSlider'
 
 
 
@@ -38,7 +37,7 @@ export default function Home({homepage, nav}) {
           if(item.__typename == "Slider"){
             return(
               <section key={index} className='homepage-hero min-h-screen -mt-40 pt-40 w-full bg-background pb-24' >
-                <HomepageHero key={index} slider={item.sliderItemsCollection.items}></HomepageHero>
+                <HomepageHero key={index} slider={item.sliderItemsCollection.items} tabSlider={item.tabSlider}></HomepageHero>
               </section>
             )
           }
@@ -46,16 +45,12 @@ export default function Home({homepage, nav}) {
           if(item.__typename == "RelatedServicesSlider"){
             return(
               <section key={index} className='related-services py-20 px-10 w-full'>
-                <div className='related-services__inner max-w-7xl mx-auto flex flex-wrap items-center'>
-                  <div className=' w-full md:w-2/3 pr-9 order-2 md:order-1'>
-                    <CardSlider key={index} cardSlides={item.relatedServicesCollection.items}></CardSlider>
-                  </div>
-                  <div className=' w-full md:w-1/3 order-1 md:order-2 md:mb-8 mb-8'>
-                    <h2 className=' font-sora'>{item.title}</h2>
-                    <p>{item.description}</p>
-                  </div>
-                </div>
-                
+                <Carousel 
+                  type='service'
+                  cardSlides={item.relatedServicesCollection.items} 
+                  title={item.title}
+                  description={item.description}
+                />
               </section>
             )
           }
@@ -69,26 +64,21 @@ export default function Home({homepage, nav}) {
           if(item.__typename == 'InsightSlider'){
             return(
               <section key={index} className='insight py-20 px-10 w-full'>
-                <div className='insight__inner max-w-7xl mx-auto flex flex-wrap items-center'>
-                  <div className=' w-full md:w-2/3 pr-9 order-2 md:order-1'>
-                    <InsightCards key={index} cardSlides={item.slideCollection.items}></InsightCards>
-                  </div>
-                  <div className=' w-full md:w-1/3 order-1 md:order-2 md:mb-8 mb-8'>
-                    <h2 className=' font-sora'>{item.title}</h2>
-                    <p>{item.description}</p>
-                    <div className='insight-cta flex flex-wrap mt-7'>
-                      {item.ctaCollection.items.map((cta,index)=>{
-                        return(
-                          <div key={index} className='insight-cta__item mb-4 mr-3'>
-                            <Button type='primary'  url={cta.url}>{cta.text}</Button>
-                          </div>
-                          
-                        )
-                      })}
-                    </div>
-                  </div>
-                </div>
-                
+                <Carousel 
+                  type='post'
+                  arrows='true'
+                  cardSlides={item.slideCollection.items} 
+                  title={item.title}
+                  description={item.description}
+                  cta={item.ctaCollection.items}
+                />
+              </section>
+            )
+          }
+          if(item.__typename == 'TabSlider'){
+            return(
+              <section key={index} className='tab-slider py-20 px-10 w-full'>
+                <TabSlider tabs={item} />
               </section>
             )
           }
