@@ -21,7 +21,14 @@ const HomepageHero = (props)=> {
             <div className="inner-homepage-hero max-w-7xl m-auto relative z-10" >
                 <HomepageSlider slides={props.slider}></HomepageSlider>
             </div>
-            <TabSlider tabs={props.tabSlider}></TabSlider>
+
+            {props.tabSlider ? 
+                <div className=" mt-9">
+                    <TabSlider tabs={props.tabSlider}></TabSlider>
+                </div>
+            : null}
+            
+            
          </div>
     )
 }
