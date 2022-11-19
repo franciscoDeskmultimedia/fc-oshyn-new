@@ -6,7 +6,7 @@ import TabSlider from "./TabSlider";
 
 const HomepageHero = (props)=> {
     return (
-        <div className="homepage-hero__inner max-w-7xl mx-auto px-9">
+        <div className="homepage-hero__inner max-w-7xl mx-auto px-9 mt-10">
             <div className="home">
                 <div className="dotted-circle__decor">
                     <Image  src='/dotted-circle.svg' alt='dotted circle decor' priority width={300} height={291}></Image>

@@ -92,6 +92,10 @@ li{
   .splide__list{
     display: flex;
     align-items: center;
+    li{
+      margin: auto;
+      @apply flex justify-center
+    }
   }
 }
 .tab-slider__inner{
@@ -105,5 +109,43 @@ li{
     height: 2px;
     border-radius: 2px;
     background: linear-gradient(63.43deg, #3364DD 35.44%, #4459D5 47.81%, #6447C8 63.57%, #7041C3 69.82%, #A94DEB 84.83%, #FE80FE 97.95%);
+  }
+}
+
+.testimony-slider__inner{
+  position: relative;
+  overflow: hidden;
+  .splide{
+    position: relative
+  }
+  .splide__arrows{
+    position: absolute;
+    width: 100%;
+    bottom: calc(100% + 20px);
+    .splide__arrow--prev{
+      left: 0;
+      svg{
+        fill: white;
+        transform: unset;
+      }
+    }
+    .splide__arrow--next{
+      left: 0;
+      svg{
+        transform: unset;
+        fill: white;
+      }
+    }
+  }
+  .stripped-circle__decor{
+    position: absolute;
+    top: -165px;
+    left: 45;
+    z-index: 1;
+  }
+  .plus__decor{
+    position: absolute;
+    bottom: -75px;
+    left: 50%;
   }
 }

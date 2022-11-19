@@ -15,6 +15,11 @@ module.exports = {
         sora: ['var(--sora-font)', ...fontFamily.sans],
         
       },
+      fontSize: {
+        h1: "clamp(2rem, 1.6rem + 2vw, 4rem)",
+        h2: "clamp(1rem, 0.5rem + 2.5vw, 3.5rem)",
+        h3: "clamp(1rem, 0.87rem + 0.6499999999999999vw, 1.65rem)"
+      },
       colors: {
         'background':'#010a27'
       }

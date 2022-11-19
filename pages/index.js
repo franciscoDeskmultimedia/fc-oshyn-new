@@ -12,6 +12,7 @@ import SliderCta from '../components/SliderCta'
 import Button from '../components/button'
 import Carousel from '../components/Carousel'
 import TabSlider from '../components/TabSlider'
+import TestimonySlider from '../components/TestimonySlider'
 
 
 
@@ -77,6 +78,14 @@ export default function Home({homepage, nav}) {
             return(
               <section key={index} className='tab-slider py-20 px-10 w-full'>
                 <TabSlider tabs={item} />
+              </section>
+            )
+          }
+          if(item.__typename == 'TestimonySlider'){
+            console.log(item)
+            return(
+              <section key={index} className='testimony-slider py-20 px-10 w-full'>
+                <TestimonySlider title={item.title} description={item.description} slides={item.testimoniesCollection.items}/>
               </section>
             )
           }

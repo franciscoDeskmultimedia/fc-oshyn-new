@@ -22,6 +22,9 @@ const LogoCarousel = (props)=>{
                             perPage: 3,
                         },
                         640: {
+                            perPage: 3,
+                        },
+                        440: {
                             perPage: 2,
                         },
                     }

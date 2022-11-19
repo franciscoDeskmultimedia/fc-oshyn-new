@@ -8,9 +8,9 @@ const TabSlider = (props) => {
         setActive(index);
     } 
     return(
-        <div className="tab-slider__inner max-w-7xl mx-auto md:px-5 flex rounded-xl z-20 relative px-5 py-3">
-            <div className=" w-1/5 ">
-                <div className="tabs flex">
+        <div className="tab-slider__inner max-w-7xl mx-auto md:px-5 flex flex-wrap md:text-left text-center rounded-xl z-20 relative px-5 py-3">
+            <div className=" w-full md:w-1/5 ">
+                <div className="tabs flex md:justify-start justify-center">
                     {tabs.map((item,index)=>{
                         if(index == 0){
                             return(
@@ -26,7 +26,7 @@ const TabSlider = (props) => {
                 </div>
                 <p className=" mt-3 text-white">{props.tabs.description}</p>
             </div>
-            <div className="tabs-logo__sliders w-4/5">
+            <div className="tabs-logo__sliders w-full md:w-4/5">
                     {tabs.map((item,index)=>{
                         return(
                             <div key={index} className={`${index == active ? ' block' : ' hidden' }`}>

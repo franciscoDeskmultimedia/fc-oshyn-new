@@ -24,7 +24,7 @@ const SliderCta = (props)=>{
                                 <SplideSlide key={index}>
                                     <div  className=" flex flex-wrap items-center">
                                         <div className=" w-full md:w-1/3 pr-11 mb-9">
-                                            <h3 className=" text-6xl font-bold font-sora text-white mb-2">{item.title}</h3>
+                                            <h2 className=" text-h1 font-bold font-sora text-white mb-2">{item.title}</h2>
                                             <p className=" text-white mb-8">{item.description.json.content[0].content[0].value}</p>
                                             <Button type="primary" url="item.cta.url">{item.cta.text}</Button>
                                         </div>
