@@ -16,6 +16,7 @@
     "eslint-config-next": "13.0.2",
     "framer-motion": "^7.6.6",
     "next": "13.0.2",
+    "next-hubspot": "^1.0.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "sass": "^1.56.1"

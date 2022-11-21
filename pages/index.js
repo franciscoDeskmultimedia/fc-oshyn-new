@@ -13,6 +13,7 @@ import Button from '../components/button'
 import Carousel from '../components/Carousel'
 import TabSlider from '../components/TabSlider'
 import TestimonySlider from '../components/TestimonySlider'
+import HubspotForm from '../components/HubspotForm'
 
 
 
@@ -82,10 +83,18 @@ export default function Home({homepage, nav}) {
             )
           }
           if(item.__typename == 'TestimonySlider'){
-            console.log(item)
             return(
               <section key={index} className='testimony-slider py-20 px-10 w-full'>
                 <TestimonySlider title={item.title} description={item.description} slides={item.testimoniesCollection.items}/>
+              </section>
+            )
+          }
+          if(item.__typename == 'TabSection'){
+            console.log(item.tabCollection.items[1].tab.formId)
+            return(
+              <section key={index} className='tabs py-20 px-10 w-full'>
+                <HubspotForm portalId={item.tabCollection.items[1].tab.portalId} formId={item.tabCollection.items[1].tab.formId}></HubspotForm>
+                test
               </section>
             )
           }
@@ -120,5 +129,6 @@ export async function getStaticProps({ preview = false }) {
   const nav = (await getNav(preview)) ?? [];
   return {
     props: { preview, homepage, nav },
+    revalidate: 1
   }
 }
