@@ -20,10 +20,7 @@ const TabSection = (props) =>{
             </div>
             <div className="tab-content w-full">
                 {tabsCollection.map((tabItem, index)=>{
-                    console.log(active)
-                    console.log
                     if(tabItem.tab.__typename == 'Iframe' ){
-                        console.log(tabItem)
                         return(
                             <div key={index} className={`${active == index ? ' block ': ' hidden '}`} dangerouslySetInnerHTML={{ __html: `${tabItem.tab.iframe}` }} ></div>
                         )
@@ -44,7 +41,6 @@ const TabSection = (props) =>{
                     }
                     
                 })}
-                <div></div>
             </div>
         </div>
     )

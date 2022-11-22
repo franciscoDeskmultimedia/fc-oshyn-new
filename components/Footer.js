@@ -53,7 +53,7 @@ const Footer = ()=>{
                         </li>
                         <li>
                             <Link className="newsletter-icon" href="https://www.linkedin.com/company/oshyn/">
-                                <Image loading="lazy" width={25} height={25} src="/icon_linkedin.svg"  alt="LinkedIn icon" />
+                                <Image loading="lazy" width={25} height={25} src="/icon_linkedIn.svg"  alt="LinkedIn icon" />
                             </Link>
                         </li>
                         <li>

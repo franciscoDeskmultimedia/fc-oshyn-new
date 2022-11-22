@@ -9,15 +9,10 @@ import { getHomePage, getNav } from '../lib/api'
 
 import { motion } from 'framer-motion';
 import SliderCta from '../components/SliderCta'
-import Button from '../components/button'
 import Carousel from '../components/Carousel'
 import TabSlider from '../components/TabSlider'
 import TestimonySlider from '../components/TestimonySlider'
-import HubspotForm from '../components/HubspotForm'
 import TabSection from '../components/TabSection'
-
-
-
 
 export default function Home({homepage, nav}) {
   
@@ -91,10 +86,12 @@ export default function Home({homepage, nav}) {
             )
           }
           if(item.__typename == 'TabSection'){
-            console.log(item.tabCollection.items[1].tab.formId)
+            
             return(
               <section key={index} className='tabs py-20 px-10 w-full'>
+                {/* <HubspotProvider > */}
                 <TabSection tabs={item}></TabSection>
+                {/* </HubspotProvider> */}
               </section>
             )
           }
@@ -105,18 +102,6 @@ export default function Home({homepage, nav}) {
       
       </motion.div>
 
-      {/* <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-        </a>
-      </footer> */}
     </>
   )
 }
@@ -126,6 +111,6 @@ export async function getStaticProps({ preview = false }) {
   const nav = (await getNav(preview)) ?? [];
   return {
     props: { preview, homepage, nav },
-    revalidate: 1
+    revalidate: 20
   }
 }
