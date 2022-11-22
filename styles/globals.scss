@@ -149,3 +149,26 @@ li{
     left: 50%;
   }
 }
+
+section.tabs{
+  .tab-section__inner{
+    li{
+      width: fit-content;
+      cursor: pointer;
+    }
+    .tab-active{
+      position: relative;
+      &:before{
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        border-radius: 2px;
+        background: linear-gradient(63.43deg, #3364DD 35.44%, #4459D5 47.81%, #6447C8 63.57%, #7041C3 69.82%, #A94DEB 84.83%, #FE80FE 97.95%);
+      }
+    }
+
+  }
+}

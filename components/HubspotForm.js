@@ -1,4 +1,5 @@
 import { useHubspotForm } from 'next-hubspot';
+import Script from 'next/script';
 
 const HubspotForm = (props)=>{
 
@@ -9,7 +10,9 @@ const HubspotForm = (props)=>{
     });
 
     return(
-        <div id={`hs-${props.formId}`} />
+        <>
+            <div id={`hs-${props.formId}`} />
+        </>
     )
 }
 

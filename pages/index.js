@@ -14,6 +14,7 @@ import Carousel from '../components/Carousel'
 import TabSlider from '../components/TabSlider'
 import TestimonySlider from '../components/TestimonySlider'
 import HubspotForm from '../components/HubspotForm'
+import TabSection from '../components/TabSection'
 
 
 
@@ -29,7 +30,7 @@ export default function Home({homepage, nav}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <motion.main initial={{opacity:0}} exit={{opacity:0}} animate={{opacity:1}} >
+      <motion.div initial={{opacity:0}} exit={{opacity:0}} animate={{opacity:1}} >
         <Navigation navItems={navigationItems}></Navigation>
         
         {homepage.page.blocksCollection.items.map((item,index)=>{
@@ -93,22 +94,18 @@ export default function Home({homepage, nav}) {
             console.log(item.tabCollection.items[1].tab.formId)
             return(
               <section key={index} className='tabs py-20 px-10 w-full'>
-                <HubspotForm portalId={item.tabCollection.items[1].tab.portalId} formId={item.tabCollection.items[1].tab.formId}></HubspotForm>
-                test
+                <TabSection tabs={item}></TabSection>
               </section>
             )
           }
-
-          // FOR THE CLAENDAR iFRAME
-          // <iframe src="https://www2.oshyn.com/meetings/oshyn/consult?embed=true&amp;parentHubspotUtk=7d3947221674e0fa9ba4562c3b9786cc&amp;parentPageUrl=https://www-prodbl-lb.oshyn.com/" width="100%" data-hs-ignore="true" style={{minWidth: '312px', minHeight: '516px', height: '756px', border: 'none'}}></iframe>
 
 
         })}
 
       
-      </motion.main>
+      </motion.div>
 
-      <footer className={styles.footer}>
+      {/* <footer className={styles.footer}>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
           target="_blank"
@@ -119,7 +116,7 @@ export default function Home({homepage, nav}) {
             <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
           </span>
         </a>
-      </footer>
+      </footer> */}
     </>
   )
 }

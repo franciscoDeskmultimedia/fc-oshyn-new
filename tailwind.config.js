@@ -13,7 +13,7 @@ module.exports = {
         lobster:['var(--lobster-font)', ...fontFamily.sans],
         rubik: ['var(--rubik-font)', ...fontFamily.sans],
         sora: ['var(--sora-font)', ...fontFamily.sans],
-        
+        hind: ['var(--hind-font)', ...fontFamily.sans],
       },
       fontSize: {
         h1: "clamp(2rem, 1.6rem + 2vw, 4rem)",
