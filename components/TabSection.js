@@ -6,7 +6,6 @@ import HubspotForm from "./HubspotForm";
 const TabSection = (props) =>{
     const [active,setActive] = useState(0)
     const tabsCollection = props.tabs.tabCollection.items;
-    console.log(tabsCollection)
     return(
         <div className="tab-section__inner max-w-7xl mx-auto flex flex-wrap items-center justify-center ">
             <div className="tabs-selector mb-8">

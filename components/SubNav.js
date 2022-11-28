@@ -4,8 +4,6 @@ import Link from "next/link";
 
 
 const SubNav = (props)=>{
-    
-    console.log(props.subnav)
     const blocks = props.subnav.blocksCollection.items;
     const subnavItems = props.subnav.subnavItemsCollection.items;
     return(

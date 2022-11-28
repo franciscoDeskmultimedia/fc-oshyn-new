@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export"
   },
   "dependencies": {
     "@contentful/rich-text-react-renderer": "^15.12.1",
@@ -19,7 +20,8 @@
     "next-hubspot": "^1.0.6",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sass": "^1.56.1"
+    "sass": "^1.56.1",
+    "sharp": "^0.31.2"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.13",

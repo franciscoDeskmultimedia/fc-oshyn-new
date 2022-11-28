@@ -2,6 +2,7 @@ import '../styles/globals.scss'
 
 import { AnimatePresence } from 'framer-motion' 
 // import { HubspotProvider } from 'next-hubspot';
+import Script from 'next/script';
 
 import { Rubik, Sora, Lobster, Hind } from '@next/font/google';
 import Layout from '../components/Layout';
@@ -27,11 +28,23 @@ const hind = Hind({
 
 function MyApp({ Component, pageProps }) {
   return (
-    
+    <>
+      <Script strategy="afterInteractive" src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`} />
+
+      <Script strategy="afterInteractive">
+          {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
+              page_path: window.location.pathname,
+              });
+          `}
+      </Script>
       <AnimatePresence>
         <Layout>
           <main className={`${lobster.variable} ${sora.variable} ${rubik.variable}`}>
-            {/* <HubspotProvider > */}
+            {/* <HubspotProvider> */}
               <Component {...pageProps} />
             {/* </HubspotProvider> */}
             <style jsx global>
@@ -47,7 +60,7 @@ function MyApp({ Component, pageProps }) {
           </main>
         </Layout>
       </AnimatePresence>
-    
+      </>
   )
 }
 
