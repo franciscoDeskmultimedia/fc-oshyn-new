@@ -8,7 +8,7 @@ const TabSection = (props) =>{
     const tabsCollection = props.tabs.tabCollection.items;
     console.log(tabsCollection)
     return(
-        <div className="tab-section__inner max-w-7xl mx-auto flex flex-wrap items-center justify-center">
+        <div className="tab-section__inner max-w-7xl mx-auto flex flex-wrap items-center justify-center ">
             <div className="tabs-selector mb-8">
                 <ul className=" flex flex-wrap gap-6 justify-center">
                     {tabsCollection.map((tab,index)=>{

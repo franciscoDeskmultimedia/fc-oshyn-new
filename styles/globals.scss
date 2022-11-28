@@ -172,3 +172,36 @@ section.tabs{
 
   }
 }
+
+.menu{
+  li{
+    position: relative;
+    &.toggle-active{
+      &::before{
+        content: "";
+        position: absolute;
+        top: 140%;
+        width: 88%;
+        left: 5%;
+        height: 3px;
+        border-radius: 2px;
+        background: linear-gradient(63.43deg, #3364DD 35.44%, #4459D5 47.81%, #6447C8 63.57%, #7041C3 69.82%, #A94DEB 84.83%, #FE80FE 97.95%);
+      }
+      .subnav{
+        display: flex;
+      }
+    }
+    .subnav{
+      position: absolute;
+      top: 156%;
+      left: -30%;
+      background-color: white;
+      z-index: 999;
+      display: none;
+      .subnav-featured-content{
+        padding: 40px;
+        background: linear-gradient(45deg, rgba(0, 0, 0, 0.08) 0%, rgba(255, 255, 255, 0.08) 100%),#222a46;
+      }
+    }
+  }
+}

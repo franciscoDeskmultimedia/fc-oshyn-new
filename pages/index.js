@@ -32,7 +32,7 @@ export default function Home({homepage, nav}) {
 
           if(item.__typename == "Slider"){
             return(
-              <section key={index} className='homepage-hero min-h-screen -mt-40 pt-40 w-full bg-background pb-24' >
+              <section key={index} className='homepage-hero min-h-screen -mt-40 pt-40 w-full bg-background pb-24  z-0' >
                 <HomepageHero key={index} slider={item.sliderItemsCollection.items} tabSlider={item.tabSlider}></HomepageHero>
               </section>
             )
@@ -88,7 +88,7 @@ export default function Home({homepage, nav}) {
           if(item.__typename == 'TabSection'){
             
             return(
-              <section key={index} className='tabs py-20 px-10 w-full'>
+              <section key={index} className='tabs py-20 px-10 w-full bg-gray-100'>
                 {/* <HubspotProvider > */}
                 <TabSection tabs={item}></TabSection>
                 {/* </HubspotProvider> */}

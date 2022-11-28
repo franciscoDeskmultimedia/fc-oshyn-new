@@ -1,7 +1,7 @@
 import '../styles/globals.scss'
 
 import { AnimatePresence } from 'framer-motion' 
-import { HubspotProvider } from 'next-hubspot';
+// import { HubspotProvider } from 'next-hubspot';
 
 import { Rubik, Sora, Lobster, Hind } from '@next/font/google';
 import Layout from '../components/Layout';
@@ -31,9 +31,9 @@ function MyApp({ Component, pageProps }) {
       <AnimatePresence>
         <Layout>
           <main className={`${lobster.variable} ${sora.variable} ${rubik.variable}`}>
-            <HubspotProvider >
+            {/* <HubspotProvider > */}
               <Component {...pageProps} />
-            </HubspotProvider>
+            {/* </HubspotProvider> */}
             <style jsx global>
               {`
                 :root {
