@@ -27,9 +27,14 @@ const TabSection = (props) =>{
                     }
                     if(tabItem.tab.__typename == 'Content' ){
                         return(
-                            <div key={index} className={`${active == index ? ' block ': ' hidden '}`} >
-                               {documentToReactComponents(tabItem.tab.content.json)}
-                            </div>
+                            // <div key={index} className={`${active == index ? ' block ': ' hidden '}`} >
+                            //    {documentToReactComponents(tabItem.tab.content.json)}
+                            // </div>
+                            <>
+                                <div className="meetings-iframe-container" dataSrc="https://www2.oshyn.com/meetings/oshyn/consult?embed=true"></div>
+                                <script defer type="text/javascript" src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
+
+                            </>
                         )
                     }
                     if(tabItem.tab.__typename == 'HubspotForm' ){
