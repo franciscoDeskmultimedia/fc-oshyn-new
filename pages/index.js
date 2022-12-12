@@ -5,7 +5,7 @@ import styles from '../styles/Home.module.css'
 import Navigation from '../components/navigation'
 import HomepageHero from '../components/homepageHero'
 
-import { getHomePage, getNav } from '../lib/api'
+import { getHomePage, getNav, getForm } from '../lib/api'
 
 import { motion } from 'framer-motion';
 import SliderCta from '../components/SliderCta'
@@ -13,11 +13,16 @@ import Carousel from '../components/Carousel'
 import TabSlider from '../components/TabSlider'
 import TestimonySlider from '../components/TestimonySlider'
 import TabSection from '../components/TabSection'
+import { useEffect, useState } from 'react'
 import Script from 'next/script'
 
-export default function Home({homepage, nav}) {
+export default function Home({homepage, nav, formAssembly}) {
   
   const navigationItems = nav.nav.navItemCollection.items;
+  const [theForm, setTheForm] = useState('')
+
+  useEffect(() => setTheForm(formAssembly), [])
+
   return (
     <>
       <Head>
@@ -29,411 +34,12 @@ export default function Home({homepage, nav}) {
         
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Script strategy='afterInteractive' id='formAssembly'>
-          {`
-           // initialize our variables
-           var captchaReady = 0;
-           var wFORMSReady = 0;
-
-
-
-           // when wForms is loaded call this
-
-           var wformsReadyCallback = function () {
-
-               // using this var to denote if wForms is loaded
-
-               wFORMSReady = 1;
-
-               // call our recaptcha function which is dependent on both
-
-               // wForms and an async call to google
-
-               // note the meat of this function wont fire until both
-
-               // wFORMSReady = 1 and captchaReady = 1
-
-               onloadCallback();
-
-           }
-
-           var gCaptchaReadyCallback = function() {
-
-               // using this var to denote if captcha is loaded
-
-               captchaReady = 1;
-
-               // call our recaptcha function which is dependent on both
-
-               // wForms and an async call to google
-
-               // note the meat of this function wont fire until both
-
-               // wFORMSReady = 1 and captchaReady = 1
-
-               onloadCallback();
-
-           };
-
-
-
-           // add event listener to fire when wForms is fully loaded
-
-           document.addEventListener("wFORMSLoaded", wformsReadyCallback);
-
-
-
-           var enableSubmitButton = function() {
-
-               var submitButton = document.getElementById('submit_button');
-
-               var explanation = document.getElementById('disabled-explanation');
-
-               if (submitButton != null) {
-
-                   submitButton.removeAttribute('disabled');
-
-                   if (explanation != null) {
-
-                       explanation.style.display = 'none';
-
-                   }
-
-               }
-
-           };
-
-           var disableSubmitButton = function() {
-
-               var submitButton = document.getElementById('submit_button');
-
-               var explanation = document.getElementById('disabled-explanation');
-
-               if (submitButton != null) {
-
-                   submitButton.disabled = true;
-
-                   if (explanation != null) {
-
-                       explanation.style.display = 'block';
-
-                   }
-
-               }
-
-           };
-
-
-
-           // call this on both captcha async complete and wforms fully
-
-           // initialized since we can't be sure which will complete first
-
-           // and we need both done for this to function just check that they are
-
-           // done to fire the functionality
-
-           var onloadCallback = function () {
-
-               // if our captcha is ready (async call completed)
-
-               // and wFORMS is completely loaded then we are ready to add
-
-               // the captcha to the page
-
-               if (captchaReady && wFORMSReady) {
-
-                                                   grecaptcha.enterprise.render('g-recaptcha-render-div', {
-
-                                                   'sitekey': '6LfMg_EaAAAAAMhDNLMlgqDChzmtYHlx1yU2y7GI',
-
-                       'theme': 'light',
-
-                       'size': 'normal',
-
-                       'callback': 'enableSubmitButton',
-
-                       'expired-callback': 'disableSubmitButton'
-
-                   })
-
-                   var oldRecaptchaCheck = parseInt('1');
-
-                   if (oldRecaptchaCheck === -1) {
-
-                       var standardCaptcha = document.getElementById("tfa_captcha_text");
-
-                       standardCaptcha = standardCaptcha.parentNode.parentNode.parentNode;
-
-                       standardCaptcha.parentNode.removeChild(standardCaptcha);
-
-                   }
-
-
-
-                   if (!wFORMS.instances['paging']) {
-
-                       document.getElementById("g-recaptcha-render-div").parentNode.parentNode.parentNode.style.display = "block";
-
-                       //document.getElementById("g-recaptcha-render-div").parentNode.parentNode.parentNode.removeAttribute("hidden");
-
-                   }
-
-                   document.getElementById("g-recaptcha-render-div").getAttributeNode('id').value = 'tfa_captcha_text';
-
-
-
-                   var captchaError = '';
-
-                   if (captchaError == '1') {
-
-                       var errMsgText = 'The CAPTCHA was not completed successfully.';
-
-                       var errMsgDiv = document.createElement('div');
-
-                       errMsgDiv.id = "tfa_captcha_text-E";
-
-                       errMsgDiv.className = "err errMsg";
-
-                       errMsgDiv.innerText = errMsgText;
-
-                       var loc = document.querySelector('.g-captcha-error');
-
-                       loc.insertBefore(errMsgDiv, loc.childNodes[0]);
-
-
-
-                       /* See wFORMS.behaviors.paging.applyTo for origin of this code */
-
-                       if (wFORMS.instances['paging']) {
-
-                           var b = wFORMS.instances['paging'][0];
-
-                           var pp = base2.DOM.Element.querySelector(document, wFORMS.behaviors.paging.CAPTCHA_ERROR);
-
-                           if (pp) {
-
-                               var lastPage = 1;
-
-                               for (var i = 1; i < 100; i++) {
-
-                                   if (b.behavior.isLastPageIndex(i)) {
-
-                                       lastPage = i;
-
-                                       break;
-
-                                   }
-
-                               }
-
-                               b.jumpTo(lastPage);
-
-                           }
-
-                       }
-
-                   }
-
-               }
-
-           }
-
-           `}      
-        </Script>
-        <Script strategy='afterInteractive' src='https://www.google.com/recaptcha/enterprise.js?onload=gCaptchaReadyCallback&render=explicit&hl=en_US' async defer></Script>
-        <Script id='formassembly2' type="text/javascript">
-           {`
-           document.addEventListener("DOMContentLoaded", function() {
-
-                var warning = document.getElementById("javascript-warning");
-
-                if (warning != null) {
-
-                    warning.parentNode.removeChild(warning);
-
-                }
-
-                var oldRecaptchaCheck = parseInt('1');
-
-                if (oldRecaptchaCheck !== -1) {
-
-                    var explanation = document.getElementById('disabled-explanation');
-
-                    var submitButton = document.getElementById('submit_button');
-
-                    if (submitButton != null) {
-
-                        submitButton.disabled = true;
-
-                        if (explanation != null) {
-
-                            explanation.style.display = 'block';
-
-                        }
-
-                    }
-
-                }
-
-            });
-           `}
-        </Script>
-        <Script id='formassembly3'>
-          {`
-
-           document.addEventListener("DOMContentLoaded", function(){
-   
-               const FORM_TIME_START = Math.floor((new Date).getTime()/1000);
-   
-               let formElement = document.getElementById("tfa_0");
-   
-               if (null === formElement) {
-   
-                   formElement = document.getElementById("0");
-   
-               }
-   
-               let appendJsTimerElement = function(){
-   
-                   let formTimeDiff = Math.floor((new Date).getTime()/1000) - FORM_TIME_START;
-   
-                   let cumulatedTimeElement = document.getElementById("tfa_dbCumulatedTime");
-   
-                   if (null !== cumulatedTimeElement) {
-   
-                       let cumulatedTime = parseInt(cumulatedTimeElement.value);
-   
-                       if (null !== cumulatedTime && cumulatedTime > 0) {
-   
-                           formTimeDiff += cumulatedTime;
-   
-                       }
-   
-                   }
-   
-                   let jsTimeInput = document.createElement("input");
-   
-                   jsTimeInput.setAttribute("type", "hidden");
-   
-                   jsTimeInput.setAttribute("value", formTimeDiff.toString());
-   
-                   jsTimeInput.setAttribute("name", "tfa_dbElapsedJsTime");
-   
-                   jsTimeInput.setAttribute("id", "tfa_dbElapsedJsTime");
-   
-                   jsTimeInput.setAttribute("autocomplete", "off");
-   
-                   if (null !== formElement) {
-   
-                       formElement.appendChild(jsTimeInput);
-   
-                   }
-   
-               };
-   
-               if (null !== formElement) {
-   
-                   if(formElement.addEventListener){
-   
-                       formElement.addEventListener('submit', appendJsTimerElement, false);
-   
-                   } else if(formElement.attachEvent){
-   
-                       formElement.attachEvent('onsubmit', appendJsTimerElement);
-   
-                   }
-   
-               }
-   
-           });
-   
-          `}
-        </Script>
-        <Script id='formassemblyScript3' type="text/javascript" src='https://promedica.tfaforms.net/wForms/3.11/js/wforms.js?v=c9ffa70238c7739bfa873c10f586d47adbfab7a2'></Script>
-
-    <Script id='formassemblyScript3' type="text/javascript">
-
-        {`wFORMS.behaviors.prefill.skip = false;`}
-
-    </Script>
-
-        <Script type="text/javascript" src='https://promedica.tfaforms.net/wForms/3.11/js/localization-en_US.js?v=c9ffa70238c7739bfa873c10f586d47adbfab7a2'></Script>
+        
       <motion.div initial={{opacity:0}} exit={{opacity:0}} animate={{opacity:1}} >
         <Navigation navItems={navigationItems}></Navigation>
+        <div dangerouslySetInnerHTML={{__html: `${theForm}`}}></div>
+        {/* {{formAssembly}} */}
 
-        <div className="wFormContainer" >
-
-          <div className="wFormHeader"></div>
-
-          <div className=""><div className="wForm" id="8-WRPR" dir="ltr">
-
-          <div className="codesection" id="code-8"></div>
-
-          <form method="post" action='https://promedica.tfaforms.net/api_v2/workflow/processor' className="  hintsBelow labelsAbove" id="8" role="form">
-
-            <div className="oneField field-container-D" id="tfa_1-D">
-
-              <label id="tfa_1-L" className="label preField reqMark" htmlFor="tfa_1">First Name&nbsp;</label><br/><div className="inputWrapper"><input aria-required="true" type="text" id="tfa_1" name="tfa_1" defaultValue="" title="First Name " className="required"/></div>
-
-            </div>
-
-            <div className="oneField field-container-D    " id="tfa_3-D">
-
-              <label id="tfa_3-L" className="label preField reqMark" htmlFor="tfa_3">Last Name&nbsp;</label><br/><div className="inputWrapper"><input aria-required="true" type="text" id="tfa_3" name="tfa_3" defaultValue="" title="Last Name " className="required"/></div>
-
-            </div>
-
-            <div className="oneField field-container-D    " id="tfa_5-D">
-
-              <label id="tfa_5-L" className="label preField reqMark" htmlFor="tfa_5">Email Address</label><br/><div className="inputWrapper"><input aria-required="true" type="text" id="tfa_5" name="tfa_5" defaultValue="" title="Email Address" className="validate-email required"/></div>
-
-            </div>
-
-            <div className="actions" id="8-A">
-
-              <div id="google-captcha" style={{display: 'none'}}>
-
-              <br/>
-              <div className="captcha">
-
-                <div className="oneField">
-
-                  <div className="g-recaptcha" id="g-recaptcha-render-div"></div>
-
-                  <div className="g-captcha-error"></div>
-
-                <br/>
-
-              </div>
-
-              <div className="captchaHelp">reCAPTCHA helps prevent automated form spam.<br/>
-
-              </div>
-
-              <div id="disabled-explanation" className="captchaHelp" style={{display: 'none'}}>The submit button will be disabled until you complete the CAPTCHA.</div>
-
-        </div>
-
-</div>
-
-<input type="submit" data-label="Submit" className="primaryAction" id="submit_button" defaultValue="Submit" />
-
-</div>
-
-<div style={{clear:'both'}}></div>
-
-<input type="hidden" defaultValue="33" name="tfa_dbFormId" id="tfa_dbFormId"/><input type="hidden" defaultValue="" name="tfa_dbResponseId" id="tfa_dbResponseId"/><input type="hidden" defaultValue="f119c2a8c517e60be6a3c65652a96d9b" name="tfa_dbControl" id="tfa_dbControl"/><input type="hidden" defaultValue="" name="tfa_dbWorkflowSessionUuid" id="tfa_dbWorkflowSessionUuid"/><input type="hidden" defaultValue="1" name="tfa_dbVersionId" id="tfa_dbVersionId"/><input type="hidden" defaultValue="" name="tfa_switchedoff" id="tfa_switchedoff" />
-
-</form>
-
-</div></div><div className="wFormFooter"><p className="supportInfo"><br/></p></div>
-
-  <p className="supportInfo" >
-
-      </p>
-
-</div>
         
         {homepage.page.blocksCollection.items.map((item,index)=>{
 
@@ -503,6 +109,8 @@ export default function Home({homepage, nav}) {
             )
           }
 
+          
+
 
         })}
 
@@ -516,8 +124,9 @@ export default function Home({homepage, nav}) {
 export async function getStaticProps({ preview = false }) {
   const homepage = (await getHomePage(preview)) ?? [];
   const nav = (await getNav(preview)) ?? [];
+  const formAssembly = (await getForm(33));
   return {
-    props: { preview, homepage, nav },
+    props: { preview, homepage, nav, formAssembly },
     revalidate: 20
   }
 }
