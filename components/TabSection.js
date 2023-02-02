@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import HubspotForm from "./HubspotForm";
+import Script from "next/script";
 
 const TabSection = (props) =>{
     const [active,setActive] = useState(0)
@@ -30,8 +31,8 @@ const TabSection = (props) =>{
                             //    {documentToReactComponents(tabItem.tab.content.json)}
                             // </div>
                             <>
-                                <div className="meetings-iframe-container" dataSrc="https://www2.oshyn.com/meetings/oshyn/consult?embed=true"></div>
-                                <script defer type="text/javascript" src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></script>
+                                {/* <div className="meetings-iframe-container" dataSrc="https://www2.oshyn.com/meetings/oshyn/consult?embed=true"></div> */}
+                                <Script id='hubspot-calendar' strategy="afterInteractive" defer type="text/javascript" src="https://static.hsappstatic.net/MeetingsEmbed/ex/MeetingsEmbedCode.js"></Script>
 
                             </>
                         )
